@@ -1,0 +1,31 @@
+﻿using DataAccessLayer.Concrete;
+using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
+using TraversalCoreProje.CQRS.Commands.GuideCommands;
+
+namespace TraversalCoreProje.CQRS.Handlers.GuideHandlers
+{
+    public class CreateGuideCommandHandler : IRequestHandler<CreateGuideCommand>
+    {
+        private readonly Context _context;
+
+        public CreateGuideCommandHandler(Context context)
+        {
+            _context = context;
+        }
+
+        public async Task<Unit> Handle(CreateGuideCommand request, CancellationToken cancellationToken)
+        {
+            _context.Guides.Add(new EntityLayer.Concrete.Guide
+            {
+                Description = request.Description,
+                //Image = request.Image,
+                Name = request.Name,
+                Status = true
+            });
+            await _context.SaveChangesAsync();
+            return Unit.Value; //işlem sonuç döndürmediğini gösterir
+        }
+    }
+}

@@ -1,0 +1,57 @@
+﻿@model Destination
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rota Güncelleme Sayfası</h1>
+
+<form method="post">
+    @Html.HiddenFor(x => x.DestinationID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.City, "Şehir")
+        <input type="text" asp-for="City" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DayNight, "Gün Gece")
+        <input type="text" asp-for="DayNight" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price, "Fiyat")
+        <input type="number" asp-for="Price" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Image, "Ana Görsel")
+        <input type="text" asp-for="Image" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Capacity, "Kapasite")
+        <input type="number" asp-for="Capacity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CoverImage, "Kapak Görseli")
+        <input type="text" asp-for="CoverImage" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Image2, "Görsel 2")
+        <input type="text" asp-for="Image2" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details1, "Detay")
+        <textarea asp-for="Details1" rows="3" cols="40" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details2, "Detay 2")
+        <textarea asp-for="Details2" rows="3" cols="40" class="form-control"></textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-outline-success">Rota Güncelle</button>
+</form>

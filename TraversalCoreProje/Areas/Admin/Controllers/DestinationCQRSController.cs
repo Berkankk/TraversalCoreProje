@@ -1,0 +1,66 @@
+﻿using DocumentFormat.OpenXml.Office.PowerPoint.Y2021.M06.Main;
+using DocumentFormat.OpenXml.Office2021.DocumentTasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using TraversalCoreProje.CQRS.Commands.DestinationCommands;
+using TraversalCoreProje.CQRS.Handlers.DestinationHandlers;
+using TraversalCoreProje.CQRS.Queries.DestinationQuery;
+
+namespace TraversalCoreProje.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    //[Route("Admin/[controller]/[action]")]
+    [AllowAnonymous]
+    public class DestinationCQRSController : Controller
+    {
+        private readonly GetAllDestinationQueryHandler _queryHandler;
+        private readonly GetDestinationByIDQueryHandler _getDestinationByIDQueryHandler;
+        private readonly CreateDestinationCommandHandler _createDestinationCommandHandler;
+        private readonly RemoveDestinationCommandHandler _removeDestinationCommandHandler;
+        private readonly UpdateDestinationCommandHandler _updateDestinationCommandHandler;
+        public DestinationCQRSController(GetAllDestinationQueryHandler queryHandler, GetDestinationByIDQueryHandler getDestinationByIDQueryHandler, CreateDestinationCommandHandler createDestinationCommandHandler, RemoveDestinationCommandHandler removeDestinationCommandHandler = null, UpdateDestinationCommandHandler updateDestinationCommandHandler = null)
+        {
+            _queryHandler = queryHandler;
+            _getDestinationByIDQueryHandler = getDestinationByIDQueryHandler;
+            _createDestinationCommandHandler = createDestinationCommandHandler;
+            _removeDestinationCommandHandler = removeDestinationCommandHandler;
+            _updateDestinationCommandHandler = updateDestinationCommandHandler;
+        }
+
+        public IActionResult Index()
+        {
+            var values = _queryHandler.Handle();
+            return View(values);
+        }
+        [HttpGet]
+        public IActionResult GetDestination(int id)
+        {
+            var values = _getDestinationByIDQueryHandler.Handle(new GetDestinationByIDQuery(id));
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult GetDestination(UpdateDestinationCommand command)
+        {
+            _updateDestinationCommandHandler.Handle(command);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult AddDestination()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddDestination(CreateDestinationCommand command)
+        {
+            _createDestinationCommandHandler.Handle(command);
+            return RedirectToAction("Index");
+        }
+        public IActionResult DeleteDestination(int id)
+        {
+            _removeDestinationCommandHandler.Handle(new RemoveDestinationCommand(id));
+            return RedirectToAction("Index");
+        }
+
+
+    }
+}

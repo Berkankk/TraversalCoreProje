@@ -1,0 +1,96 @@
+﻿<div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+    <div class="card h-100">
+        <div class="card-header d-flex align-items-center justify-content-between pb-0">
+            <div class="card-title mb-0">
+                <h5 class="m-0 me-2">Rezervasyon İstatistikleri</h5>
+              
+            </div>
+            <div class="dropdown">
+                <button class="btn p-0"
+                        type="button"
+                        id="reservationStatistics"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="reservationStatistics">
+                    <a class="dropdown-item" href="javascript:void(0);">Tümünü Seç</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Yenile</a>
+                    <a class="dropdown-item" href="javascript:void(0);">Paylaş</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex flex-column align-items-center gap-1">
+                
+                    <span>Rota Paketleri İçinde</span>
+                </div>
+                <div id="reservationStatisticsChart"></div>
+            </div>
+            <ul class="p-0 m-0">
+                <li class="d-flex mb-4 pb-1">
+                    <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-primary">
+                            <i class="bx bx-plane-alt"></i>
+                        </span>
+                    </div>
+                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                            <h6 class="mb-0">Uçuş</h6>
+                            <small class="text-muted">Yurt İçi, Yurt Dışı</small>
+                        </div>
+                        <div class="user-progress">
+                            <small class="fw-semibold">82.5k</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="d-flex mb-4 pb-1">
+                    <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-success"><i class="bx bx-hotel"></i></span>
+                    </div>
+                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                            <h6 class="mb-0">Otel</h6>
+                            <small class="text-muted">Oda, Suit, Villa</small>
+                        </div>
+                        <div class="user-progress">
+                            <small class="fw-semibold">23.8k</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="d-flex mb-4 pb-1">
+                    <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-info"><i class="bx bx-ship"></i></span>
+                    </div>
+                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                            <h6 class="mb-0">Tur</h6>
+                            <small class="text-muted">Gemi, Kara Turları</small>
+                        </div>
+                        <div class="user-progress">
+                            <small class="fw-semibold">849k</small>
+                        </div>
+                    </div>
+                </li>
+                <li class="d-flex">
+                    <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-secondary">
+                            <i class="bx bx-spa"></i>
+                        </span>
+                    </div>
+                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                            <h6 class="mb-0">Spa & Wellness</h6>
+                            <small class="text-muted">Masaj, Sauna</small>
+                        </div>
+                        <div class="user-progress">
+                            <small class="fw-semibold">99</small>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
